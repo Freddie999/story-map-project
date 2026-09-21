@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>When blood takes a shortcut | Beyond the Road</title>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+  <main>
+    <div class="map-container">
+      <div class="map" id="map"></div>
+    </div>
+    <section class="slide-section">
+      <article class="slide" id="title-slide">
+        <div class="intro-content">
+          <h1>When blood takes a shortcut</h1>
+          <p>By Freddie</p>
+          <p>
+            A study of drone blood delivery in Rwanda found a
+            <strong>51% reduction in the in-hospital mortality rate from
+            severe bleeding after childbirth</strong> at hospitals using the service.
+          </p>
+          <p>
+            What changes when urgently needed blood can travel over the hills?
+            This story map explores the geography behind faster delivery,
+            comparing road journeys and drone flight times.
+          </p>
+          <p>Source: <a href="https://knowledge.wharton.upenn.edu/article/how-rwanda-is-using-drones-to-improve-health-care/">Wharton research summary, May 2026</a>.</p>
+          <details>
+            <summary>What does the finding mean?</summary>
+            <p>
+              The study reports a relative reduction in in-hospital mortality
+              from postpartum hemorrhage, or severe bleeding after childbirth.
+              It does not measure a reduction in all maternal deaths in Rwanda.
+              The route comparisons below illustrate travel-time differences;
+              they do not measure lives saved at the mapped facilities.
+            </p>
+          </details>
+          <p><strong>Scroll to follow the journey.</strong></p>
+        </div>
+      </article>
+
+      <article class="slide" id="rwanda-context">
+        <h2>A short distance. A longer journey.</h2>
+        <p>
+          Rwanda’s hills can turn a short distance into a long road trip.
+          Before drone delivery, hospital staff sometimes spent hours traveling
+          to regional blood banks to collect supplies.
+        </p>
+        <p>
+          Blood available at a supply center still needs to reach the care team.
+          The route matters. Start with the wider medical-delivery network,
+          then follow one journey from Muhanga to Ruli.
+        </p>
+        <details>
+          <summary>Sources and map boundary</summary>
+          <p>Terrain and blood collection: <a href="https://knowledge.wharton.upenn.edu/article/how-rwanda-is-using-drones-to-improve-health-care/">Knowledge at Wharton</a>.</p>
+          <p>
+            Rwanda cutout: supplied GeoJSON with
+            <a href="https://docs.mapbox.com/data/tilesets/reference/mapbox-countries-v1/">Mapbox country-boundary metadata</a>.
+          </p>
+        </details>
+      </article>
+
+      <article class="slide" id="road-access">
+        <h2>How far is a delivery?</h2>
+        <p>
+          These dots show <strong>817 delivery-site records</strong> in the
+          broader medical-delivery network served from Muhanga and Kayonza.
+          Larger, darker dots mean longer modeled road journeys.
+        </p>
+        <p>
+          Only <strong>8.3%</strong> of these journeys take 30 minutes or less
+          by road from their assigned distribution center.
+        </p>
+        <p><strong>Modeled road travel time</strong></p>
+        <ul class="time-legend" aria-label="Road travel-time legend">
+          <li><span class="time-dot time-30" aria-hidden="true"></span>Up to 30 minutes</li>
+          <li><span class="time-dot time-60" aria-hidden="true"></span>Over 30–60 minutes</li>
+          <li><span class="time-dot time-120" aria-hidden="true"></span>Over 60–120 minutes</li>
+          <li><span class="time-dot time-long" aria-hidden="true"></span>Over 120 minutes</li>
+        </ul>
+        <p>Click a dot for its name and time, or <a href="accessibility-table.html">read all travel times in a table</a>.</p>
+        <details>
+          <summary>About this comparison</summary>
+          <p>
+            These records are screened distribution-center-to-site pairs, not a
+            national facility count. Names identify likely healthcare sites;
+            blood-service eligibility is not verified. Failed road routes,
+            large endpoint gaps and duplicate-coordinate records are excluded.
+          </p>
+          <p>
+            Road estimates use OSRM and OpenStreetMap, September 20, 2026.
+            Both road and flight estimates describe outbound travel only,
+            excluding preparation, waiting, return travel and unmapped access.
+            Thirty minutes is an illustrative threshold, not a clinical deadline.
+          </p>
+        </details>
+      </article>
+
+      <article class="slide" id="ruli-road">
+        <h2>Follow the road to Ruli</h2>
+        <p>
+          Ruli lies north of Muhanga, but the road takes a detour east.
+          The modeled journey covers <strong>95.8 kilometers</strong> and
+          takes <strong>111.7 minutes</strong>, almost two hours.
+        </p>
+        <p>
+          Follow the solid line from the distribution center to the facility.
+          What would change if the delivery could take a more direct route?
+        </p>
+        <details>
+          <summary>How this journey was estimated</summary>
+          <p>
+            This is a modeled road delivery from Muhanga, not a recorded trip
+            or a reconstruction of historical collection from a blood bank.
+            Preparation, waiting, return travel and unmodeled access gaps are excluded.
+          </p>
+          <p>
+            The six selected examples use
+            <a href="https://openrouteservice.org/">OpenRouteService</a>
+            roads based on OpenStreetMap and selected planned outbound flights.
+            The network overviews use OSRM roads and average outbound flight
+            distances from the supplied route statistics, so estimates can differ.
+          </p>
+        </details>
+      </article>
+
+      <article class="slide" id="ruli-flight">
+        <h2>Same destination. Different journey.</h2>
+        <p>
+          The planned flight to Ruli takes an estimated <strong>26.7 minutes</strong>,
+          compared with 111.7 minutes by road. That is a modeled travel-time
+          difference of <strong>85 minutes</strong>.
+        </p>
+        <p>
+          Both journeys start at Muhanga. The solid road stays visible as
+          the dashed flight path takes a more direct course toward Ruli.
+        </p>
+        <details>
+          <summary>About the flight estimate</summary>
+          <p>
+            The supplied route is a planned outbound flight dated September 11,
+            2026, not a recorded flight. The estimate covers travel only,
+            excluding preparation, waiting and return travel.
+          </p>
+        </details>
+      </article>
+
+      <article class="slide" id="drone-access">
+        <h2>What changes across the network?</h2>
+        <p>
+          Return to the same <strong>817 delivery-site records</strong>.
+          Estimated outbound drone travel puts <strong>53.0%</strong> within
+          30 minutes, compared with <strong>8.3%</strong> by road.
+        </p>
+        <p>
+          The time bands stay the same. Smaller, lighter dots show how much
+          closer many destinations become in travel time.
+        </p>
+        <p><strong>Estimated outbound drone travel time</strong></p>
+        <ul class="time-legend" aria-label="Drone travel-time legend">
+    <li><span class="time-dot time-30" aria-hidden="true"></span>Up to 30 minutes</li>
+    <li><span class="time-dot time-60" aria-hidden="true"></span>Over 30–60 minutes</li>
+    <li><span class="time-dot time-120" aria-hidden="true"></span>Over 60–120 minutes</li>
+    <li><span class="time-dot time-long" aria-hidden="true"></span>Over 120 minutes</li>
+  </ul>
+        <p><a href="accessibility-table.html">Compare both times for every site</a>.</p>
+        <details>
+          <summary>Reading the comparison</summary>
+          <p>
+            Both estimates start at each site's assigned distribution center.
+            These are modeled travel times, not complete delivery times or
+            measured historical improvements. Thirty minutes is an illustrative
+            threshold, not a clinical deadline. The network includes broader
+            medical deliveries; blood-service eligibility is not verified.
+          </p>
+        </details>
+      </article>
+
+      <article class="slide" id="six-comparison">
+        <h2>One example, a wider pattern</h2>
+        <p>
+          Ruli is one of six selected facilities with a modeled road journey
+          of over an hour and a planned outbound flight under thirty minutes.
+          All six comparisons start at Muhanga.
+        </p>
+        <p>Solid lines show roads. Dashed lines show planned flights.</p>
+        <table class="comparison-table">
+    <caption>
+      Estimated one-way travel from Muhanga, in minutes
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">Facility</th>
+        <th scope="col">Road</th>
+        <th scope="col">Flight</th>
+        <th scope="col">Gap</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Ruli</th>
+        <td>111.7</td><td>26.7</td><td>85.0</td>
+      </tr>
+      <tr>
+        <th scope="row">Kaduha</th>
+        <td>93.9</td><td>23.8</td><td>70.1</td>
+      </tr>
+      <tr>
+        <th scope="row">Shyira</th>
+        <td>94.1</td><td>27.9</td><td>66.2</td>
+      </tr>
+      <tr>
+        <th scope="row">Kirinda</th>
+        <td>60.5</td><td>15.2</td><td>45.3</td>
+      </tr>
+      <tr>
+        <th scope="row">Gakoma</th>
+        <td>72.2</td><td>28.0</td><td>44.3</td>
+      </tr>
+      <tr>
+        <th scope="row">Gikonko health center</th>
+        <td>71.0</td><td>27.1</td><td>43.9</td>
+      </tr>
+    </tbody>
+  </table>
+        <details>
+          <summary>Selection, estimates and sources</summary>
+          <p>
+            These facilities were selected for long road journeys and short
+            flights. They illustrate that contrast rather than representing
+            every facility in Rwanda. Gap means road time minus flight time,
+            calculated before rounding.
+          </p>
+          <p>
+            Estimates exclude preparation, waiting, return travel and unmodeled
+            road-access gaps. Sources:
+            <a href="https://openrouteservice.org/">OpenRouteService</a>
+            using OpenStreetMap, and supplied planned outbound flight routes
+            dated September 11, 2026. These route estimates do not measure patient outcomes.
+          </p>
+        </details>
+      </article>
+
+      <article class="slide" id="conclusion">
+        <h2>Faster delivery. More timely care.</h2>
+        <p>
+          The study behind the opening finding also found greater mortality
+          reductions at hospitals closer to drone ports. Delivery locations
+          still matter, even when supplies can travel by air.
+        </p>
+        <p>
+          <strong>Where should delivery services be located so more care teams
+          can get blood when they need it?</strong>
+        </p>
+        <details>
+          <summary>Research and limits</summary>
+          <p>
+            Source: <a href="https://knowledge.wharton.upenn.edu/article/how-rwanda-is-using-drones-to-improve-health-care/">Wharton’s summary of the Rwanda blood-delivery study</a>.
+            Its health findings come from a separate study, not the six mapped
+            route comparisons. Facility-specific mortality results are not
+            available here, and travel-time savings cannot be converted into lives saved.
+          </p>
+        </details>
+        <p><a href="#title-slide">Return to the beginning</a></p>
+      </article>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="js/index.js" type="module"></script>
+</body>
+</html>
