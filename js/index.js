@@ -29,12 +29,36 @@ baseTileLayer.addTo(map);
 const container = document.querySelector('.slide-section');
 const slides = document.querySelectorAll('.slide');
 
+const distributionIcon = L.icon({
+  iconUrl: 'https://emoji.slack-edge.com/T020JDYRWN9/zipline-logo/03f6c766937f88c4.png',
+  iconSize: [20, 20],
+  iconAnchor: [16, 16],
+  tooltipAnchor: [18, 0],
+});
+
+const healthFacilityIcon = L.icon({
+  iconUrl: 'data/map-hospital.svg',
+  iconSize: [20, 20],
+  iconAnchor: [15, 15],
+  tooltipAnchor: [18, 0],
+});
+
 const journeyOptions = {
   pointToLayer: (feature, latlng) => {
-    return L.marker(latlng, {
+    const markerOptions = {
       alt: feature.properties.label,
       title: feature.properties.label,
-    });
+    };
+
+    if (feature.properties.kind === 'facility') {
+      markerOptions.icon = healthFacilityIcon;
+    }
+
+    if (feature.properties.kind === 'origin') {
+      markerOptions.icon = distributionIcon;
+    }
+
+    return L.marker(latlng, markerOptions);
   },
 
   style: (feature) => {
@@ -65,7 +89,7 @@ const journeyOptions = {
   onEachFeature: (feature, layer) => {
     if (feature.geometry.type === 'Point') {
       layer.bindTooltip(feature.properties.label, {
-        permanent: true,
+        permanent: false,
         direction: feature.properties.labelDirection || 'right',
       });
     }
@@ -86,9 +110,10 @@ const accessibilityOptions = {
 
     if (properties.kind === 'origin') {
       return L.marker(latlng, {
+        icon: distributionIcon,
         alt: properties.label,
         title: properties.label,
-      }).bindTooltip(properties.label, { permanent: true });
+      }).bindTooltip(properties.label, { permanent: false });
     }
 
     // Size changes as well as color, so color is not the only clue.

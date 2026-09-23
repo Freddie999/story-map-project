@@ -183,8 +183,9 @@ summary:focus-visible {
 }
 
 
-/* Full-width opening slide. */
-#title-slide {
+/* Matching full-width opening and closing slides. */
+#title-slide,
+#conclusion {
   width: 100%;
   max-width: none;
   min-height: 100vh;
@@ -201,13 +202,19 @@ summary:focus-visible {
   box-shadow: none;
 }
 
+/* Leave room to see Rwanda before the closing panel covers the map. */
+#conclusion {
+  margin-top: 90vh;
+}
+
 /* Keep long paragraphs from stretching across the screen. */
 .intro-content {
   width: 100%;
   max-width: 46rem;
 }
 
-.intro-content h1 {
+.intro-content h1,
+.intro-content h2 {
   font-size: clamp(2rem, 5vw, 3.5rem);
   line-height: 1.15;
 }
