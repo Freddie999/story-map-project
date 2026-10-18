@@ -1,16 +1,13 @@
 {
-  "name": "story-map-project",
+  "name": "when-blood-takes-a-shortcut",
   "version": "1.0.0",
-  "description": "* [_What's in a Vacant Lot_](examples/Vacant_Lots_AdrianLeon/), Adrián León, Max Masuda-Farkas, and Xuezhu Zhao * [_Surveillance in New Orleans_](examples/NoLA_Surveillance_BrianaCervantes/), Briana Cervantes * [_A Spatial History of House Music_](examples/House_Music_MarlanaZink/), Marlana Zink",
-  "main": "index.js",
+  "description": "A Leaflet story map exploring modeled medical-delivery accessibility in Rwanda.",
   "type": "module",
-  "directories": {
-    "example": "examples"
-  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "serve": "uv run --no-project python -m http.server 8000",
+    "lint": "eslint js && stylelint \"css/**/*.css\""
   },
-  "author": "",
+  "author": "Frederick Abalo",
   "license": "ISC",
   "devDependencies": {
     "@eslint/js": "^10.0.1",
@@ -20,5 +17,6 @@
     "globals": "^17.11.0",
     "stylelint": "^17.14.1",
     "stylelint-config-standard": "^40.0.0"
-  }
+  },
+  "homepage": "https://freddie999.github.io/story-map-project/"
 }
